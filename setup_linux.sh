@@ -4,3 +4,4 @@
 current_dir=$(pwd)
 
 ln -s "${current_dir}"/.Xmodmap ~/.Xmodmap
+ln -s "${current_dir}"/.xprofile ~/.xprofile
