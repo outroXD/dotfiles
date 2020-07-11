@@ -39,9 +39,13 @@ sudo sed -i.bk 's/#Port 22/Port 50022/g' sshd_config && \
 sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' sshd_config && \
 sudo sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' sshd_config && \
 sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' sshd_config
-echo "$password" |\
+echo "$password" | \
 sudo systemctl restart sshd && \
 sudo systemctl status sshd
+
+printf "iptables settings."
+echo "$password" | \
+sudo apt -y install iptables-persistent
 
 printf "install gpu driver."
 mkdir gpu && cd gpu || exit
